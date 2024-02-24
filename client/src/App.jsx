@@ -26,7 +26,7 @@ function App() {
           <Route path='/todo' element={<ToDo />} />
           <Route path='/ledger' element={<TradeLedger />} />
           <Route path='/stats' element={<TradeStats />} />
-          <Route path='/update' element={<UpdateTrade />} />
+          <Route path='/update/:id' element={<UpdateTrade />} />
         </Routes>
       </BrowserRouter>
     </>

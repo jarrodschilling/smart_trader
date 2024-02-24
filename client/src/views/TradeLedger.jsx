@@ -1,5 +1,6 @@
 import StockService from "../services/StockService"
 import {useState, useEffect} from 'react'
+import { Link } from "react-router-dom"
 
 const TradeLedger = (props) => {
     const [stocks, setStocks] = useState([])
@@ -41,10 +42,21 @@ const TradeLedger = (props) => {
             })
     }, [])
 
+    const deleteHandler = (idForDeletion) => {
+        StockService.deleteOneStock(idForDeletion)
+            .then((res) => {
+                console.log(res)
+                const filteredList = stocks.filter((stock) => {
+                    return stock._id !== idForDeletion
+                })
+                setStocks(filteredList)
+            })
+    }
+
     return (
         <div>
             <h1>Trade Ledger</h1>
-            <div>
+            <div className="displayContainer">
                 <table>
                     <thead>
                         <tr>
@@ -56,14 +68,18 @@ const TradeLedger = (props) => {
                             <th>Total Cost</th>
                             <th>Shaper</th>
                             <th>Tactical</th>
+                            <th>Open</th>
+                            <th>Close</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            stocks.map((stock, index) => (
-                                <tr key={index}>
+                            stocks
+                            .sort((a, b) => new Date(a.date) - new Date(b.date))
+                            .map((stock) => (
+                                <tr key={stock._id} className={`${(stock.openTrade === true)? 'ledgerBuy':(stock.closeTrade === true)? 'ledgerSell':""}`}>
                                     <td>{dateChanger(stock.date)}</td>
                                     <td>{stock.ticker}</td>
                                     <td>{stock.buySell}</td>
@@ -72,8 +88,10 @@ const TradeLedger = (props) => {
                                     <td>{totalCost(stock.price, stock.shares)}</td>
                                     <td>{stock.shaper}</td>
                                     <td>{stock.tactical}</td>
-                                    <td>Edit</td>
-                                    <td>Delete</td>
+                                    <td>{stock.openTrade? "Yes":""}</td>
+                                    <td>{stock.closeTrade? "Yes":""}</td>
+                                    <td><button><Link to={`/update/${stock._id}`}>EDIT</Link></button></td>
+                                    <td><button onClick={()=> deleteHandler(stock._id)}>DELETE</button></td>
                                 </tr>
                             ))
                         }

@@ -3,11 +3,19 @@ import {Link} from 'react-router-dom'
 const NavBar = (props) => {
 
     return (
-        <div>
-            <h1>NavBar</h1>
-            <button><Link to="/">Home</Link></button>
-            <button><Link to="/add">Add Trade</Link></button>
-            <button><Link to="/ledger">Ledger</Link></button>
+        <div className='navRow'>
+            <div className="navTitle">
+                <span><Link className="dashLink" to="/">Smart</Link></span>
+                <span><Link className="dashLink" to="/">Trader</Link></span>
+            </div>
+            <div className="navLinks">
+                <Link className="dashLink" to="/current">Portfolio</Link>
+                <Link className="dashLink" to="/add">Add Trade</Link>
+                <Link className="dashLink" to="/ledger">Ledger</Link>
+                <Link className="dashLink" to="/equitycurve">Equity Curve</Link>
+                <Link className="dashLink" to="/stats">Statistics</Link>
+                <Link className="dashLink" to="/todo">To Do</Link>
+            </div>
 
         </div>
     )
