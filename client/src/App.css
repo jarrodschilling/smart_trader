@@ -149,3 +149,59 @@ td {
 .ledgerBuy {
   background-color: rgba(135, 209, 135, 0.501);
 }
+
+.hidden {
+  visibility: hidden;
+}
+
+.tradeHeaderContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.statsCol {
+  display: flex;
+  flex-direction: row;
+  margin: 0 5px;
+  gap: 5px;
+  width: 350px;
+}
+
+.statsInnerCol {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  margin-bottom: 20px;
+  gap: 10px;
+  width: 150px;
+}
+
+.statsLabels {
+  font-weight: 700;
+}
+
+.statsDisplayBox {
+  border: 2px solid #18112d;
+  height: 20px;
+  width: 90px;
+  padding-bottom: 1px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.detailGain, .detailLoss {
+  border: 2px solid #18112d;
+  height: 20px;
+  width: 90px;
+  padding-bottom: 1px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.detailGain {
+  background-color: rgba(135, 209, 135, 0.429);
+}
+
+.detailLoss {
+  background-color: rgba(217, 76, 76, 0.512);
+}
