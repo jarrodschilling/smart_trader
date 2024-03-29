@@ -7,7 +7,10 @@ const TradeSchema = new Schema(
             minlength: [1, "Ticker symbol must be at least one character"],
             maxlength: [5, "Ticker symbol cannot be more than 5 characters"]
         },
-        // Needs attention
+        name: {
+            type: String,
+            require: [true, "Name is required"]
+        },
         date: {
             type: Date,
             require: [true, "Must be a date"]

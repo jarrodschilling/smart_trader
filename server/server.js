@@ -3,6 +3,7 @@ import express from 'express'; // Import Express framework for building the serv
 import cors from 'cors'; // Import CORS module to allow cross-origin resource sharing
 import dotenv from 'dotenv'; // Import dotenv to read environment variables from .env files
 import dbConnect from './config/mongoose.config.js'; // Import function to connect to database
+import yahooRouter from './routes/yahoo.routes.js';
 import router from './routes/trade.routes.js';
 
 
@@ -20,6 +21,8 @@ dotenv.config();
 
 // Use the router middleware for handling API routes under /api prefix
 app.use('/api', router)
+// app.use('/api', yahooRouter)
+app.use('/api', yahooRouter)
 
 
 // Start the server and listen on specified port from environment variables

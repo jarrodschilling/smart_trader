@@ -93,7 +93,7 @@ const TradeStats = (props) => {
                                 <td className={`${(openTradeTrue(stock) === false)? 'hidden': ''}`}>{formatedPercent(gainLoss(stock)/(portfolio)*100)}</td>
                                 
                                 {/* <td><button className="editDeleteBtn"><Link className="linkNoDec" to={`/trades/${stock}/details`}>Details</Link></button></td> */}
-                                {/* <td><button className="editDeleteBtn" onClick={()=>detailsHandler(stock)}>Details</button></td> */}
+                                <td><button className="editDeleteBtn" onClick={()=>detailsHandler(stock)}>Details</button></td>
                             </tr>
                         )
                     )}
